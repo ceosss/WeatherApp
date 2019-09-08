@@ -47,7 +47,7 @@ passport.deserializeUser(function(id,done){
 passport.use(new GoogleStrategy({
     clientID:'105475092538-qq100ud277gucas8pagjucb8ookd42qh.apps.googleusercontent.com',
     clientSecret:'i3Q1ZIa_wC1pmO0xf-EFkYYl',
-    callbackURL:'http://localhost:3000/whatever'
+    callbackURL:'/whatever'
 },
 function(accessToken, refreshToken, profile, done){
     console.log(profile.photos[0].value);
