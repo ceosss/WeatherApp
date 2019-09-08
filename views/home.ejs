@@ -312,7 +312,8 @@
             var url =
                 `api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=dc6e05fd50246405d838573f10282c6a&units=metric`;
             // var url = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&APPID=dc6e05fd50246405d838573f10282c6a";
-            var finalURL = proxy + url;
+            // var finalURL = proxy + url;
+            var finalURL = url;
             axios.get(finalURL).then(function (data) {
                 if (data.status == 200) {
                     console.log(data);
