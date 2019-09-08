@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        body {
+            background: #9cff9e;
+            height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+            /* flex-direction: row; */
+            /* width: 50%; */
+            /* align-items: center; */
+            justify-content: center;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+            /* overflow: hidden; */
+        }
+
+        .main {
+            background: white;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 3%;
+            width: 666px;
+            align-items: center;
+            height: max-content;
+        }
+
+        #heading {
+            /* margin-top: -7%; */
+            font-size: 1.8rem;
+            background: orange;
+            border-top-left-radius: 3%;
+            border-top-right-radius: 3%;
+            padding-top: 1px;
+            /* color: white; */
+            font-weight: bolder;
+        }
+
+        #head {
+            padding-top: 0%;
+        }
+
+        .icons {
+            margin-top: -5%;
+        }
+
+        .city {
+            font-size: 1.4rem;
+        }
+
+        .longlat {
+            margin-top: 0%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        p {
+            font-size: 17px;
+            margin-top: -15px;
+        }
+
+        /* .lat{
+    width: 50%;
+}
+
+.long{
+    width: 50%;
+} */
+
+        .tempe {
+            margin-top: -5%;
+            font-size: 2rem;
+        }
+
+        .summ {
+            margin-top: -5%;
+            font-size: 15px;
+            color: gray;
+        }
+
+        .btn {
+            /* margin-top: 50px; */
+            margin-bottom: 50px;
+        }
+
+        #btn {
+            background: #9cff9e;
+            border: none;
+            padding: 8px;
+            box-shadow: none;
+            cursor: pointer;
+            transition: background 250ms ease-in-out,
+                transform 150ms ease;
+            text-decoration: none;
+            outline: 3px solid orange;
+
+        }
+
+        #btn:hover {
+            transform: scale(1.25);
+            font-weight: 700;
+        }
+
+        #btn:active {
+            transform: scale(0.75);
+        }
+
+        #forcast {
+            margin-top: -5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        #forcast img {
+            margin-top: -15%;
+        }
+
+        #forcast span p {
+            font-size: 14px;
+            color: gray;
+            font-weight: 500;
+        }
+
+        #forHeading {
+            margin-bottom: 7%;
+            margin-top: -3%;
+        }
+
+        #forHeading h2 {
+            font-weight: bolder;
+        }
+
+        .userDetails {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+            background: #9cff9e;
+            padding-top: 15px;
+            padding-bottom: 10px;
+            margin-left: 25%;
+            margin-right: 22%;
+            border-radius: 2%;
+        }
+
+        .userDetails img {
+            right: 0%;
+            width: 100px;
+            height: 100px;
+        }
+
+        .userDetails div a {
+            font-size: 20px;
+            font-weight: 900;
+            text-decoration: none;
+            color: red;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js"></script>
+    <!-- <script type="text/javascript" src="script.js"></script> -->
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main">
+        <div id="heading">
+            <h1 id="head">WEATHER APP</h1>
+            <div class="icons">
+                <!-- <canvas id="icon" width="128" height="128"></canvas> -->
+                <img id="icon" src="">
+            </div>
+        </div>
+        <div class="location">
+            <div class="city">
+                <h1 id="cityName">NA</h1>
+            </div>
+            <div class="longlat">
+                <div class="lat">
+                    <h1 id="latitude">NA</h1>
+                    <p>Latitude</p>
+                </div>
+                <div class="long">
+                    <h1 id="longitude">NA</h1>
+                    <p>Longitude</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tempe">
+            <h1 id="temp">NA</h1>
+        </div>
+        <div class="summ">
+            <h2 id="summary"></h2>
+        </div>
+        <div class="btn">
+            <button id="btn" onclick="forcastFun()">HOURLY FORECAST</button>
+        </div>
+        <div id="forHeading" style="visibility: hidden">
+            <h2>HOURLY FORECAST</h2>
+        </div>
+        <div style="visibility: hidden" id="forcast">
+            <div class="forc1">
+                <h3 id="forc1t">
+                    </h4>
+                    <img id="forc1Icon" src="">
+                    <p id="forc1"></p>
+                    <span>
+                        <p id="forc1s"></p>
+                    </span>
+
+            </div>
+            <div class="forc2">
+                <h3 id="forc2t">
+                    </h4>
+                    <img id="forc2Icon" src="">
+                    <p id="forc2"></p>
+                    <span>
+                        <p id="forc2s"></p>
+                    </span>
+
+            </div>
+            <div class="forc3">
+                <h3 id="forc3t">
+                    </h4>
+                    <img id="forc3Icon" src="">
+                    <p id="forc3"></p>
+                    <span>
+                        <p id="forc3s"></p>
+                    </span>
+
+            </div>
+            <div class="forc4">
+                <h3 id="forc4t">
+                    </h4>
+                    <img id="forc4Icon" src="">
+                    <p id="forc4"></p>
+                    <span>
+                        <p id="forc4s"></p>
+                    </span>
+
+            </div>
+            <div class="forc5">
+                <h3 id="forc5t"></h3>
+                <img id="forc5Icon" src="">
+                <p id="forc5"></p>
+                <span>
+                    <p id="forc5s"></p>
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="userDetails">
+            <div>
+                <img src="<%= user.img %>">
+            </div>
+            <div>
+                <h3>Hey<br><%= user.username %></h3>
+                <% if(user){ %>
+                <a href="/logout">LOGOUT</a>
+                <% } %>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var latitude, longitude;
+        navigator.geolocation.getCurrentPosition(location => {
+            latitude = location.coords.latitude;
+            longitude = location.coords.longitude;
+            console.log(latitude + " " + longitude);
+
+            // DARKSKY API
+
+            //   var proxy = "https://cors-anywhere.herokuapp.com/";
+            //   var url = `https://api.darksky.net/forecast/996566a5f7f4d7559d846314376e919f/${latitude},${longitude}?units=auto`;
+            //   var finalURL = proxy + url;
+            //   axios.get(finalURL).then(function(datas) {
+            //     if (datas.status == 200) {
+            //       console.log(datas);
+            //       var data = datas.data;
+            //       document.getElementById("temp").textContent = Math.trunc(data.currently.temperature)+" °C";
+            //       document.getElementById("cityName").textContent = data.timezone;
+            //       document.getElementById("longitude").textContent = Math.trunc(data.longitude);
+            //       document.getElementById("latitude").textContent = Math.trunc(data.latitude);
+            //       document.getElementById("summary").textContent = data.currently.summary;
+            //       var skycons = new Skycons({ color: "#222" });
+            //       skycons.set("icon", data.currently.icon);
+            //       skycons.play();
+            //   var d= new Date(data.currently.time * 1000);
+            //   console.log(d);
+
+            //OPENWEATHER_API
+
+            var proxy = "https://cors-anywhere.herokuapp.com/";
+            var url =
+                `api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=dc6e05fd50246405d838573f10282c6a&units=metric`;
+            // var url = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139&APPID=dc6e05fd50246405d838573f10282c6a";
+            var finalURL = proxy + url;
+            axios.get(finalURL).then(function (data) {
+                if (data.status == 200) {
+                    console.log(data);
+                    document.getElementById("temp").textContent =
+                        Math.trunc(data.data.main.temp) + " °C";
+                    document.getElementById("cityName").textContent = data.data.name;
+                    document.getElementById("longitude").textContent = data.data.coord.lon;
+                    document.getElementById("latitude").textContent = data.data.coord.lat;
+                    document.getElementById(
+                        "summary"
+                    ).textContent = data.data.weather[0].description.toUpperCase();
+                    document.getElementById("icon").src = `http://openweathermap.org/img/wn/${
+        data.data.weather[0].icon
+      }@2x.png`;
+                }
+            });
+        });
+
+        function forcastFun() {
+            navigator.geolocation.getCurrentPosition(location => {
+                latitude = location.coords.latitude;
+                longitude = location.coords.longitude;
+                console.log(latitude + " " + longitude);
+                forcastURL =
+                    `http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&APPID=dc6e05fd50246405d838573f10282c6a&units=metric`;
+                axios.get(forcastURL).then(function (data) {
+                    if (data.status == 200) console.log(data);
+                    obj = data.data.list;
+                    var s = "";
+                    var forDiv = document.getElementById("forcast");
+                    if (forDiv.style.visibility === "visible") {
+                        document.getElementById("forcast").style.visibility = "hidden";
+                        document.getElementById("forHeading").style.visibility = "hidden";
+                    } else {
+                        document.getElementById("forcast").style.visibility = "visible";
+                        document.getElementById("forHeading").style.visibility = "visible";
+                    }
+                    for (var i = 2; i < 7; i++) {
+                        console.log(toDate(obj[i].dt));
+
+                        document.getElementById(`forc${i - 1}`).textContent = toDate(obj[i].dt);
+
+                        document.getElementById(`forc${i - 1}t`).textContent =
+                            Math.trunc(obj[i].main.temp) + " °C";
+
+                        document.getElementById(`forc${i - 1}s`).textContent =
+                            obj[i].weather[0].description;
+
+                        document.getElementById(
+                            `forc${i - 1}Icon`
+                        ).src = `http://openweathermap.org/img/wn/${
+          obj[i].weather[0].icon
+        }@2x.png`;
+                    }
+                });
+            });
+        }
+
+        function toDate(data) {
+            var theDate = new Date(data * 1000);
+            dateString = theDate.toGMTString();
+            finalDate =
+                dateString.substring(5, 11) + " : " + dateString.substring(17, 22);
+            // console.log(finalDate);
+            return finalDate;
+        }
+    </script>
+</body>
+
+</html>

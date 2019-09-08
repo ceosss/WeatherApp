@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        body {
+            /* background: #9cff9e; */
+            background: url('https://images.unsplash.com/photo-1558981420-c532902e58b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1177&q=80');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+
+        }
+
+        .authText {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: bolder;
+            border: 1px solid rebeccapurple;
+                padding: 10px;
+            transform: scale(1);
+            transition: 250ms ease-in-out,
+                transform 150ms ease;
+        }
+        .authText:hover{
+            transform: scale(1.25);
+            transition: 250ms ease-in-out,
+                transform 150ms ease;
+            border: 1px solid white;
+        }
+        .authText a{
+            color: white;
+            padding: 20px 20px;
+        }
+        .authText a:hover{
+            color: rebeccapurple;
+        }
+
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Please Authenticate !!!</title>
+</head>
+
+<body>
+    <div class='authText'>
+        <a style="text-decoration: none;" href="/login/auth">AUTHENTICATE</a>
+    </div>
+</body>
+
+</html>
