@@ -52,8 +52,8 @@ passport.use(
       clientID:
         "105475092538-qq100ud277gucas8pagjucb8ookd42qh.apps.googleusercontent.com",
       clientSecret: "i3Q1ZIa_wC1pmO0xf-EFkYYl",
-      //   callbackURL: "https://my-weather-app-v1.herokuapp.com/whatever"
       callbackURL: "https://my-weather-app-v1.herokuapp.com/whatever"
+      //   callbackURL: "/whatever"
     },
     function(accessToken, refreshToken, profile, done) {
       console.log(profile.photos[0].value);
