@@ -53,7 +53,7 @@ passport.use(
         "105475092538-qq100ud277gucas8pagjucb8ookd42qh.apps.googleusercontent.com",
       clientSecret: "i3Q1ZIa_wC1pmO0xf-EFkYYl",
       //   callbackURL: "https://my-weather-app-v1.herokuapp.com/whatever"
-      callbackURL: "/whatever"
+      callbackURL: "https://my-weather-app-v1.herokuapp.com/whatever"
     },
     function(accessToken, refreshToken, profile, done) {
       console.log(profile.photos[0].value);
@@ -112,10 +112,10 @@ app.get("/logout", function(req, res) {
   res.redirect("/");
 });
 
-app.listen(3000, function() {
+// app.listen(3000, function() {
+//   console.log("Server Started at port 3000");
+// });
+
+app.listen(process.env.PORT || 3000, function() {
   console.log("Server Started at port 3000");
 });
-
-// app.listen(process.env.PORT || 3000, function() {
-//     console.log("Server Started at port 3000");
-//   });
