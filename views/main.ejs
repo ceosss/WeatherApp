@@ -22,26 +22,33 @@
             font-size: 3rem;
             font-weight: bolder;
             border: 1px solid rebeccapurple;
-                padding: 10px;
+            padding: 10px;
             transform: scale(1);
             transition: 250ms ease-in-out,
                 transform 150ms ease;
         }
-        .authText:hover{
+
+        .authText:hover {
             transform: scale(1.25);
             transition: 250ms ease-in-out,
                 transform 150ms ease;
             border: 1px solid white;
         }
-        .authText a{
+
+        .authText a {
             color: white;
             padding: 20px 20px;
         }
-        .authText a:hover{
+
+        .authText a:hover {
             color: rebeccapurple;
         }
 
-
+        @media screen and (max-width: 1000px) {
+            .authText {
+                font-size: 2rem;
+            }
+        }
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

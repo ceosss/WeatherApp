@@ -121,6 +121,8 @@
 
         #forcast img {
             margin-top: -15%;
+            /* width: 70px;
+            height: 70px; */
         }
 
         #forcast span p {
@@ -138,15 +140,23 @@
             font-weight: bolder;
         }
 
+        .user {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .userDetails {
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-around;
+            flex-direction: row;
             margin-bottom: 20px;
-            background: #9cff9e;
+            background: #9B59B6;
             padding-top: 15px;
             padding-bottom: 10px;
-            margin-left: 25%;
-            margin-right: 22%;
+            width: 70%;
+            /* margin-left: 25%;
+            margin-right: 22%; */
             border-radius: 2%;
         }
 
@@ -160,14 +170,43 @@
             font-size: 20px;
             font-weight: 900;
             text-decoration: none;
-            color: red;
+            color: white;
+
+        }
+
+        @media screen and (max-width: 1000px) {
+            #forcast img {
+                width: 70px;
+                height: 70px;
+                margin-top: -25%;
+            }
+
+            #forcast {
+                font-size: 0.85rem;
+            }
+
+            #forcast div p {
+                font-size: 0.85rem;
+            }
+
+            #forHeading {
+                margin-top: -5%;
+            }
+
+            #forHeading h2 {
+                font-size: 1rem;
+            }
+
+            .userDetails {
+                font-size: 0.85rem;
+            }
         }
     </style>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
@@ -211,10 +250,10 @@
         <div class="btn">
             <button id="btn" onclick="forcastFun()">HOURLY FORECAST</button>
         </div>
-        <div id="forHeading" style="visibility: hidden">
+        <div id="forHeading" style="visibility: hidden; display: none">
             <h2>HOURLY FORECAST</h2>
         </div>
-        <div style="visibility: hidden" id="forcast">
+        <div style="visibility: hidden; display: none" id="forcast">
             <div class="forc1">
                 <h3 id="forc1t">
                     </h4>
@@ -266,19 +305,19 @@
             </div>
 
         </div>
-
-        <div class="userDetails">
-            <div>
-                <img src="<%= user.img %>">
-            </div>
-            <div>
-                <h3>Hey<br><%= user.username %></h3>
-                <% if(user){ %>
-                <a href="/logout">LOGOUT</a>
-                <% } %>
+        <div class="user">
+            <div class="userDetails">
+                <div>
+                    <img src="<%= user.img %>">
+                </div>
+                <div class="udetails">
+                    <h3>Hey<br><%= user.username %></h3>
+                    <% if(user){ %>
+                    <a href="/logout">LOGOUT</a>
+                    <% } %>
+                </div>
             </div>
         </div>
-
     </div>
 
     <script>
@@ -347,10 +386,14 @@
                     var forDiv = document.getElementById("forcast");
                     if (forDiv.style.visibility === "visible") {
                         document.getElementById("forcast").style.visibility = "hidden";
+                        document.getElementById("forcast").style.display = "none";
                         document.getElementById("forHeading").style.visibility = "hidden";
+                        document.getElementById("forHeading").style.display = "none";
                     } else {
                         document.getElementById("forcast").style.visibility = "visible";
                         document.getElementById("forHeading").style.visibility = "visible";
+                        document.getElementById("forcast").style.display = "flex";
+                        document.getElementById("forHeading").style.display = "block";
                     }
                     for (var i = 2; i < 7; i++) {
                         console.log(toDate(obj[i].dt));
