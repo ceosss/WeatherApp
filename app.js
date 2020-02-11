@@ -17,7 +17,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(process.env.MONGOOSECONNECT.toString(), {
+var uri = process.env.MONGOOSECONNECT.toString();
+
+mongoose.connect(uri, {
   useNewUrlParser: true
 });
 
