@@ -21,12 +21,9 @@ app.use(passport.session());
 
 // var uri = "" + process.env.MONGOOSECONNECT;
 
-mongoose.connect(
-  "mongodb+srv://sswarajsamant:bs1999rs@students-s3blg.mongodb.net/oAuth",
-  {
-    useNewUrlParser: true
-  }
-);
+mongoose.connect(gcon.mongoc, {
+  useNewUrlParser: true
+});
 
 var userSchema = new mongoose.Schema({
   username: String,
@@ -55,7 +52,12 @@ passport.deserializeUser(function(id, done) {
 });
 
 passport.use(
-  new GoogleStrategy(gcon, function(accessToken, refreshToken, profile, done) {
+  new GoogleStrategy(gcon.gc, function(
+    accessToken,
+    refreshToken,
+    profile,
+    done
+  ) {
     console.log(profile.photos[0].value);
     user.findOne({ googleId: profile.id }).then(function(data) {
       if (!data) {
