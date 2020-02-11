@@ -4,6 +4,8 @@ var mongoose = require("mongoose");
 var passport = require("passport");
 var cookieSession = require("cookie-session");
 var GoogleStrategy = require("passport-google-oauth20").Strategy;
+var dotenv = require("dotenv");
+dotenv.config();
 
 app.use(
   cookieSession({
@@ -15,10 +17,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(
-  "mongodb+srv://sswarajsamant:bs1999rs@students-s3blg.mongodb.net/oAuth",
-  { useNewUrlParser: true }
-);
+mongoose.connect(process.env.MONGOOSECONNECT, { useNewUrlParser: true });
 
 var userSchema = new mongoose.Schema({
   username: String,
@@ -49,10 +48,9 @@ passport.deserializeUser(function(id, done) {
 passport.use(
   new GoogleStrategy(
     {
-      clientID:
-        "105475092538-qq100ud277gucas8pagjucb8ookd42qh.apps.googleusercontent.com",
-      clientSecret: "i3Q1ZIa_wC1pmO0xf-EFkYYl",
-      callbackURL: "https://my-weather-app-v1.herokuapp.com/whatever"
+      clientID: process.env.CLIENTID,
+      clientSecret: process.env.CLIENTSECRET,
+      callbackURL: process.env.CALLBACKURL
       //   callbackURL: "/whatever"
     },
     function(accessToken, refreshToken, profile, done) {

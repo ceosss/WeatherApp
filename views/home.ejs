@@ -5,7 +5,15 @@
 
     <style>
         body {
-            background: #9cff9e;
+            /* background: #9cff9e; */
+            background-image: linear-gradient(
+          to right top,
+          #051937,
+          #612e62,
+          #bd4262,
+          #f37c3e,
+          #ebd112
+        );
             height: 100vh;
             display: flex;
             flex-wrap: wrap;
@@ -51,6 +59,7 @@
 
         .city {
             font-size: 1.4rem;
+            text-transform: uppercase;
         }
 
         .longlat {
@@ -90,7 +99,7 @@
         }
 
         #btn {
-            background: #9cff9e;
+            /* background: #9cff9e; */
             border: none;
             padding: 8px;
             box-shadow: none;
@@ -98,7 +107,7 @@
             transition: background 250ms ease-in-out,
                 transform 150ms ease;
             text-decoration: none;
-            outline: 3px solid orange;
+            outline: 1px solid orange;
 
         }
 
@@ -152,8 +161,9 @@
             justify-content: space-around;
             flex-direction: row;
             margin-bottom: 20px;
-            background: #9B59B6;
+            background: orange;
             padding-top: 15px;
+            color: white;
             padding-bottom: 10px;
             width: 70%;
             /* margin-left: 25%;
@@ -171,8 +181,8 @@
             font-size: 20px;
             font-weight: 900;
             text-decoration: none;
-            color: white;
-
+            color: red;
+    font-weight: bold;
         }
 
         @media screen and (max-width: 1000px) {
@@ -210,7 +220,10 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <!-- <link rel="stylesheet" href="styles.css"> -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js"></script>
     <!-- <script type="text/javascript" src="script.js"></script> -->

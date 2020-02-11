@@ -1,191 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <style>
-        body {
-            /* background: #9cff9e; */
-            /* background: url('https://images.unsplash.com/photo-1558981420-c532902e58b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1177&q=80'); */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            /* height: 100vh; */
-            height: -webkit-fill-available;
-            overflow: hidden;
-            margin: 0;
-            /* background-repeat: no-repeat; */
-            /* background-position: center; */
-            /* background-size: cover; */
+      html {
+        background-image: linear-gradient(
+          to right top,
+          #051937,
+          #612e62,
+          #bd4262,
+          #f37c3e,
+          #ebd112
+        );
+        height: 100vh;
+        width: 100vw;
+      }
+      body {
+        /* background: #9cff9e; */
+        /* background: url('https://images.unsplash.com/photo-1558981420-c532902e58b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1177&q=80'); */
 
-        }
+        /* height: 100vh; */
+        height: -webkit-fill-available;
+        overflow: hidden;
+        margin: 0;
+        color: black;
+        font-family: "Montserrat", sans-serif;
+        /* background-repeat: no-repeat; */
+        /* background-position: center; */
+        /* background-size: cover; */
+      }
 
+      .head {
+        font-size: 30px;
+        text-align: center;
+        color: white;
+        letter-spacing: 7px;
+      }
+
+      .icons {
+        display: flex;
+        justify-content: center;
+        margin: 50px 0;
+        text-align: center;
+      }
+
+      .icons i {
+        margin: 0 20px;
+        font-size: 30px;
+        color: greenyellow;
+      }
+
+      .authText {
+        height: 30vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Montserrat", sans-serif;
+        font-size: 3rem;
+        font-weight: bolder;
+        padding: 10px;
+        transform: scale(1);
+      }
+
+      .authText a:hover {
+        transform: scale(1.05);
+      }
+
+      .authText a {
+        color: greenyellow;
+        padding: 20px 20px;
+        font-weight: bold;
+        transition: 500ms ease-in-out;
+        letter-spacing: 5px;
+        border: 1px solid greenyellow;
+      }
+
+      .foot {
+        background-color: greenyellow;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .foot a {
+        text-decoration: none;
+        color: #eb2f06;
+        cursor: pointer;
+      }
+
+      @media screen and (max-width: 1000px) {
         .authText {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3rem;
-            font-weight: bolder;
-            border: 1px solid white;
-            padding: 10px;
-            transform: scale(1);
-            transition: 250ms ease-in-out,
-                transform 150ms ease;
+          font-size: 2rem;
+          height: 20vh;
         }
-
-        .authText:hover {
-            transform: scale(1.25);
-            transition: 250ms ease-in-out,
-                transform 150ms ease;
-            border: 1px solid yellow;
-        }
-
-        .authText a {
-            color: white;
-            padding: 20px 20px;
-        }
-
-
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: #b61924;
-            background-image: url("");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: 50% 50%;
-        }
-
-        @media screen and (max-width: 1000px) {
-            .authText {
-                font-size: 2rem;
-            }
-        }
+      }
     </style>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/0c6b5a74b9.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Please Authenticate !!!</title>
-</head>
+  </head>
 
-<body>
-    <div id="particles-js"></div>
-
-    <div class='authText'>
-        <a style="text-decoration: none;" href="/login/auth">AUTHENTICATE</a>
+  <body>
+    <div class="head">
+      <h1>WEATHER APP</h1>
     </div>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
-    <script>
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 380,
-                    "density": {
-                        "enable": true,
-                        "value_area": 3000
-                    }
-                },
-                "color": {
-                    "value": "#ffffff"
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
-                    },
-                    "image": {
-                        "src": "img/github.svg",
-                        "width": 100,
-                        "height": 100
-                    }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": false,
-                    "anim": {
-                        "enable": false,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": {
-                        "enable": false,
-                        "speed": 40,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#ffffff",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 6,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": false,
-                        "rotateX": 600,
-                        "rotateY": 1200
-                    }
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 140,
-                        "line_linked": {
-                            "opacity": 1
-                        }
-                    },
-                    "bubble": {
-                        "distance": 400,
-                        "size": 40,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
-                    }
-                }
-            },
-            "retina_detect": true
-        });
-    </script>
-</body>
-
+    <div class="icons">
+      <i class="fas fa-wind"></i>
+      <i class="fas fa-smog"></i>
+      <i class="fas fa-sun"></i>
+      <i class="fas fa-umbrella"></i>
+      <i class="fas fa-poo-storm"></i>
+    </div>
+    <div class="authText">
+      <a style="text-decoration: none;" href="/login/auth">AUTHENTICATE</a>
+    </div>
+    <div class="foot">
+      <p>
+        MADE WITH 🧡 by <a href="https://www.instagram.com/ceo.sss/">ceo.sss</a>
+      </p>
+    </div>
+  </body>
 </html>
