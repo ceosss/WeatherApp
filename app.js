@@ -17,10 +17,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(
-  `mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@students-s3blg.mongodb.net/oAuth`,
-  { useNewUrlParser: true }
-);
+mongoose.connect(process.env.MONGOOSECONNECT, { useNewUrlParser: true });
 
 var userSchema = new mongoose.Schema({
   username: String,
