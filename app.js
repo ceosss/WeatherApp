@@ -17,11 +17,14 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-var uri = "" + process.env.MONGOOSECONNECT;
+// var uri = "" + process.env.MONGOOSECONNECT;
 
-mongoose.connect(uri, {
-  useNewUrlParser: true
-});
+mongoose.connect(
+  "mongodb+srv://sswarajsamant:bs1999rs@students-s3blg.mongodb.net/oAuth",
+  {
+    useNewUrlParser: true
+  }
+);
 
 var userSchema = new mongoose.Schema({
   username: String,
