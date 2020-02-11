@@ -6,6 +6,8 @@ var cookieSession = require("cookie-session");
 var GoogleStrategy = require("passport-google-oauth20").Strategy;
 var dotenv = require("dotenv");
 dotenv.config();
+var myModule = require("./export.js");
+const gcon = myModule.connectd;
 
 app.use(
   cookieSession({
@@ -53,35 +55,27 @@ passport.deserializeUser(function(id, done) {
 });
 
 passport.use(
-  new GoogleStrategy(
-    {
-      clientID: process.env.CLIENTID,
-      clientSecret: process.env.CLIENTSECRET,
-      callbackURL: process.env.CALLBACKURL
-      //   callbackURL: "/whatever"
-    },
-    function(accessToken, refreshToken, profile, done) {
-      console.log(profile.photos[0].value);
-      user.findOne({ googleId: profile.id }).then(function(data) {
-        if (!data) {
-          user.create(
-            {
-              username: profile.displayName,
-              googleId: profile.id,
-              img: profile.photos[0].value
-            },
-            function(err, user) {
-              console.log("user created" + user);
-              done(null, user);
-            }
-          );
-        } else {
-          console.log("user found" + data);
-          done(null, data);
-        }
-      });
-    }
-  )
+  new GoogleStrategy(gcon, function(accessToken, refreshToken, profile, done) {
+    console.log(profile.photos[0].value);
+    user.findOne({ googleId: profile.id }).then(function(data) {
+      if (!data) {
+        user.create(
+          {
+            username: profile.displayName,
+            googleId: profile.id,
+            img: profile.photos[0].value
+          },
+          function(err, user) {
+            console.log("user created" + user);
+            done(null, user);
+          }
+        );
+      } else {
+        console.log("user found" + data);
+        done(null, data);
+      }
+    });
+  })
 );
 
 // app.get('/',function(req,res){
