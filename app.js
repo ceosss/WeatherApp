@@ -17,7 +17,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(process.env.MONGOOSECONNECT, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGOOSECONNECT.toString(), {
+  useNewUrlParser: true
+});
 
 var userSchema = new mongoose.Schema({
   username: String,
