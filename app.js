@@ -82,6 +82,7 @@ passport.use(
 // });
 
 app.get("/", function(req, res) {
+  console.log("DONE");
   if (req.user) {
     res.render("home.ejs", { user: req.user });
   } else {
